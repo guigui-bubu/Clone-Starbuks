@@ -3,7 +3,7 @@
         "name": "Mon premier projet",
         "slug": "mon-premier-projet",
         "version": "1.0.0",
-        "orientation": "all",
+        "orientation": "portrait",
         "icon": "./assets/icon.png",
         "splash": {
             "image": "./assets/splash.png",

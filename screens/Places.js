@@ -1,22 +1,32 @@
 // Librairies
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import { useSelector } from "react-redux"; // selectionne une partie de notre reducer
+
+// Composant
+import Place from "../components/Place/Places";
 
 function Places(props) {
-    let fromLogo = false;
-    if (props.route.params && props.route.params.fromLogo) {
-        fromLogo = props.route.params.fromLogo;
-    }
+  // Variable
+  const places = useSelector((state) => state.places.places);
 
-    return (
-        <View>
-            <Text>Places</Text>
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <Text>Redirection</Text>
-            </TouchableOpacity>
-            {fromLogo && <Text>Vous avez découvert l'easter egg</Text>}
-        </View>
-    );
+  let displayedPlaces;
+
+  //displayedPlaces = places.map((toto) => (
+  //  <View Key={place.id}>
+  //    <Text>{toto.location}</Text>
+  //  </View>
+  // ));
+
+  return (
+    <View>
+      <FlatList
+        data={places}
+        renderItem={(item) => <Place item={item.item} />}
+        keyExtractor={(item) => item.id.toString()} // pour mettre les id en string et non en number pour la key
+      ></FlatList>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({});
