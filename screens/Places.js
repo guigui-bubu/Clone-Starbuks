@@ -1,6 +1,6 @@
 // Librairies
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useSelector } from "react-redux"; // selectionne une partie de notre reducer
 
 // Composant
@@ -9,14 +9,6 @@ import Place from "../components/Place/Places";
 function Places(props) {
   // Variable
   const places = useSelector((state) => state.places.places);
-
-  let displayedPlaces;
-
-  //displayedPlaces = places.map((toto) => (
-  //  <View Key={place.id}>
-  //    <Text>{toto.location}</Text>
-  //  </View>
-  // ));
 
   return (
     <View>

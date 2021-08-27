@@ -1,5 +1,5 @@
 // Reducers pour les produits
-
+import ADD_PRODUCT from "../actions/products";
 const initialState = {
   products: [
     {
@@ -55,6 +55,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        products: [{ name: action.productName }, ...state.products],
+      };
     default:
       return state;
   }

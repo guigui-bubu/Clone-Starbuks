@@ -19,6 +19,7 @@ import DrawerContentScreen from "../screens/drawer/DrawerContentScreen";
 import HomeScreen from "../screens/Home";
 import PlacesScreen from "../screens/Places";
 import InformationsScreen from "../screens/Informations";
+import AddProductScreen from "../screens/AddProducts";
 
 // Variable
 const headerOptions = {
@@ -117,6 +118,21 @@ const PlacesStackNavigator = () => {
   );
 };
 
+// AddProductStackNavigator
+const AddProductNavigator = createStackNavigator();
+
+const AddProductStackNavigator = () => {
+  return (
+    <AddProductNavigator.Navigator>
+      <AddProductNavigator.Screen
+        name="AddProduct"
+        component={AddProductScreen}
+        options={{ title: "Proposer un produit", ...headerOptions }}
+      />
+    </AddProductNavigator.Navigator>
+  );
+};
+
 // AppTabNavigator
 const TabNavigator = createBottomTabNavigator();
 
@@ -132,6 +148,8 @@ const AppTabNavigator = () => {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name === "TabPlaces") {
             iconName = focused ? "location" : "location-outline";
+          } else if (route.name === "TabAddProduct") {
+            iconName = focused ? "add-circle" : "add-circle-outline";
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -154,6 +172,11 @@ const AppTabNavigator = () => {
         name="TabPlaces"
         component={PlacesStackNavigator}
         options={{ title: "Salons" }}
+      />
+      <TabNavigator.Screen
+        name="TabAddProduct"
+        component={AddProductStackNavigator}
+        options={{ title: "Proposer" }}
       />
     </TabNavigator.Navigator>
   );
